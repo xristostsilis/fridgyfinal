@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fridgy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="iphone-xr">
+        <div class="top-bar">
+            <img class="center" src="/pictures/png/logo-no-background.png" alt="Fridgy Logo" class="logo">
+            <div  class="barcode-scanner" onclick="openCamera()"><i class="fas fa-barcode fa-3x"></i></div>
+        </div>
+        <div class="content">
+            <!-- Product listings -->
+            <div class="products">
+
+                <div class="product">
+                    <div class="details">
+                        <h2>Apple</h2>
+                        <div class="icon"><i class="fas fa-apple-alt"></i></div>
+                    </div>
+                    <div class="quantity-box">6</div>
+                    <p>Expires on: 2024-03-20</p>
+                </div>
+
+                <div style="background-color: rgb(245, 136, 117);" class="product">
+                    <div class="details">
+                        <h2>Carrots</h2>
+                        <div class="icon"><i class="fas fa-carrot"></i></div>
+                        
+                    </div>
+                    <div class="quantity-box-expired">0</div>
+                    
+                    
+                    <p>You need to restock Carrots!</p>
+                </div>
+                <div class="product">
+                    <div class="details">
+                        <h2>Lemon</h2>
+                        <div class="icon"><i class="fas fa-lemon"></i></div>
+                    </div>
+                    <div class="quantity-box">1</div>
+                    <p>Expires on: 2024-03-30</p>
+                </div>
+
+                <div class="product">
+                    <div class="details">
+                        <h2>Fish</h2>
+                        <div class="icon"><i class="fas fa-fish"></i></i></div>
+                    </div>
+                    <div class="quantity-box">6</div>
+                    <p>Expires on: 2024-03-20</p>
+                </div>
+
+                <div class="product">
+                    <div class="details">
+                        <h2>Pepper Hot</h2>
+                        <div class="icon"><i class="fas fa-pepper-hot"></i></div>
+                    </div>
+                    <div class="quantity-box">2</div>
+                    <p>Expires on: 2024-03-22</p>
+                </div>
+                <div class="product">
+                    <div class="details">
+                        <h2>Eggs</h2>
+                        <div class="icon"><i class="fas fa-egg"></i></div>
+                    </div>
+                    <div class="quantity-box">1</div>
+                    <p>Expires on: 2024-03-30</p>
+                </div>
+                
+            </div>
+        </div>
+        <div class="bottom-nav">
+            <div class="nav-item"><i class="fas fa-home"></i></div>
+            <div class="nav-item"><i class="fas fa-user"></i></div>
+            <div class="nav-item"><i class="fas fa-shopping-cart"></i></div>
+            <div class="nav-item"><i class="fas fa-bars"></i></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+<script>
+
+function openCamera() {
+    // Code to open the phone's camera
+    // Example: You can use JavaScript's MediaDevices API to access the camera
+    // For demonstration purposes, here's a placeholder alert
+    alert("Opening camera...");
+
+    // Create an input element of type 'file'
+    var input = document.createElement('input');
+    input.type = 'file';
+
+    // Set accept attribute to open the camera
+    input.accept = 'image/*';
+
+    // Trigger click event to open the camera
+    input.click();
+}
+</script>
+</html>

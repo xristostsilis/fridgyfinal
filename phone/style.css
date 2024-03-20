@@ -1,0 +1,148 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f7; /* Light blue background color */
+}
+
+.product {
+    position: relative; /* Add position relative to position the quantity div */
+    /* Existing styles for .product */
+}
+
+.quantity {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background-color: #007bff;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+
+
+
+.iphone-xr {
+    border: 16px solid #f1f1f1;
+    border-radius: 36px;
+    height: 896px;
+    width: 414px;
+    position: relative;
+    overflow: hidden;
+    margin: 50px auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35%;
+  }
+
+.top-bar {
+    height: 90px;
+    background-color: white; /* Blue color for top bar */
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    width: 150px;
+}
+
+.content {
+    padding: 20px;
+    overflow-y: auto; /* Make content scrollable */
+    height: calc(100% - 120px); /* Subtract top bar and bottom nav height */
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.product {
+    background-color: #cdd9fa;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.expiringProduct {
+    background-color: #d82929;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.quantity-box-expired {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background-color: #ffc107;
+    color: #fff;
+    padding: 8px 10px;
+    border-radius: 4px;
+}
+
+.quantity-box {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background-color: #ffc107;
+    color: #fff;
+    padding: 8px 10px;
+    border-radius: 4px;
+
+}
+
+
+.product img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Add this style to customize the icon size */
+.icon {
+    font-size: 48px;
+    color: #ffc107; /* Color of the banana icon */
+    margin-bottom: 10px;
+}
+
+
+.details {
+    margin-top: 10px;
+}
+
+
+
+.bottom-nav {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    background-color: #ececec; /* White background color */
+}
+
+.nav-item {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    color: #666; /* Gray color for nav items */
+}
+
+.nav-item:hover {
+    background-color: #f0f4f7; /* Light blue background color on hover */
+}

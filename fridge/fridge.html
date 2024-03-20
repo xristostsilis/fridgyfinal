@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fridge Display</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+    position: relative;
+  }
+  
+  #top-bar {
+    width: 100%;
+    height: 80px;
+    background-color: #d0d0d0;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    padding-bottom: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999; /* Set a higher z-index to keep the navbar above other elements */
+  }
+
+  #logo {
+    width: 70px;
+    height: 70px;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    object-fit: contain;
+  }
+
+  #greeting {
+    font-size: 20px;
+    margin-left: 20px;
+  }
+  
+  #weather {
+    font-size: 16px;
+    margin-right: 20px;
+  }
+
+  #fridge-display {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 100px; /* Adjust to make room for the top bar */
+    box-sizing: border-box;
+  }
+  
+  .item-container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px; /* Adjust the space between items */
+  }
+
+  .item {
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  .item .info-container {
+    text-align: center;
+  }
+
+  .item .info-container span {
+    display: block;
+  }
+
+  .item .quantity {
+    margin-left: auto;
+    color: #777;
+    font-style: italic;
+  }
+
+  .item .plus-button {
+    font-size: 18px;
+    margin-right: 10px;
+    color: #007bff;
+    cursor: pointer;
+  }
+  
+  .item i {
+    margin-top: 10px; /* Adjusted to separate the information button from the text */
+  }
+  
+  .expired {
+    background-color: #ffcccc;
+  }
+
+  /* Style for the barcode box */
+  .barcode-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    z-index: 999; /* Ensure the box appears on top of other content */
+    display: none; /* Initially hide the box */
+  }
+
+  .barcode-content {
+    text-align: center;
+  }
+
+  /* Style for the barcode image */
+  .barcode-img {
+    width: 150px;
+    height: auto;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div id="top-bar">
+  <img id="logo" src="/pictures/png/logo-no-background.png" alt="Fridge Logo">
+</div>
+
+<div id="fridge-display">
+  <div class="item-container">
+    <div class="item">
+      <i class="fas fa-plus-circle plus-button"></i>
+      <div class="info-container">
+        <span>Apple</span>
+        <span class="quantity">3 remaining</span>
+      </div>
+      <i class="fas fa-info-circle" onclick="showBarcode('Apples')"></i>
+    </div>
+  </div>
+  <div class="item-container">
+    <div class="item">
+      <i class="fas fa-plus-circle plus-button"></i>
+      <div class="info-container">
+        <span>Orange Juice</span>
+        <span class="quantity">1 remaining</span>
+      </div>
+      <i class="fas fa-info-circle" onclick="showBarcode('Orange Juice')"></i>
+    </div>
+  </div>
+  <div class="item-container">
+    <div class="item">
+      <i class="fas fa-plus-circle plus-button"></i>
+      <div class="info-container">
+        <span>Chicken</span>
+        <span class="quantity">2 remaining</span>
+      </div>
+      <i class="fas fa-info-circle" onclick="showBarcode('Chicken')"></i>
+    </div>
+  </div>
+  <div class="item-container">
+    <div class="item expired">
+      <i class="fas fa-plus-circle plus-button"></i>
+      <div class="info-container">
+        <span>Yogurt</span>
+        <span class="quantity">Expired on 2024-03-14</span>
+      </div>
+      <i class="fas fa-info-circle" onclick="showBarcode('Yogurt')"></i>
+    </div>
+  </div>
+
+
+  <div class="item-container">
+    <div class="item">
+      <i class="fas fa-plus-circle plus-button"></i>
+      <div class="info-container">
+        <span>Milk</span>
+        <span class="quantity">3 remaining</span>
+      </div>
+      <i class="fas fa-info-circle" onclick="showBarcode('Apples')"></i>
+    </div>
+  </div>
+  <div class="item-container">
+    <div class="item">
+      <i class="fas fa-plus-circle plus-button"></i>
+      <div class="info-container">
+        <span>Eggs</span>
+        <span class="quantity">1 remaining</span>
+      </div>
+      <i class="fas fa-info-circle" onclick="showBarcode('Orange Juice')"></i>
+    </div>
+  </div>
+  <div class="item-container">
+    <div class="item">
+      <i class="fas fa-plus-circle plus-button"></i>
+      <div class="info-container">
+        <span>Cheese</span>
+        <span class="quantity">2 remaining</span>
+      </div>
+      <i class="fas fa-info-circle" onclick="showBarcode('Chicken')"></i>
+    </div>
+  </div>
+  <div class="item-container">
+    <div class="item expired">
+      <i class="fas fa-plus-circle plus-button"></i>
+      <div class="info-container">
+        <span>Yogurt</span>
+        <span class="quantity">Expired on 2024-03-14</span>
+      </div>
+      <i class="fas fa-info-circle" onclick="showBarcode('Yogurt')"></i>
+    </div>
+  </div>
+
+  <div class="item-container">
+    <div class="item">
+      <i class="fas fa-plus-circle plus-button"></i>
+      <div class="info-container">
+        <span>Butter</span>
+        <span class="quantity">3 remaining</span>
+      </div>
+      <i class="fas fa-info-circle" onclick="showBarcode('Apples')"></i>
+    </div>
+  </div>
+  <div class="item-container">
+    <div class="item">
+      <i class="fas fa-plus-circle plus-button"></i>
+      <div class="info-container">
+        <span>Meat</span>
+        <span class="quantity">1 remaining</span>
+      </div>
+      <i class="fas fa-info-circle" onclick="showBarcode('Orange Juice')"></i>
+    </div>
+  </div>
+  <div class="item-container">
+    <div class="item">
+      <i class="fas fa-plus-circle plus-button"></i>
+      <div class="info-container">
+        <span>Fish</span>
+        <span class="quantity">2 remaining</span>
+      </div>
+      <i class="fas fa-info-circle" onclick="showBarcode('Chicken')"></i>
+    </div>
+  </div>
+  <div class="item-container">
+    <div class="item expired">
+      <i class="fas fa-plus-circle plus-button"></i>
+      <div class="info-container">
+        <span>Hummus</span>
+        <span class="quantity">Expired on 2024-03-14</span>
+      </div>
+      <i class="fas fa-info-circle" onclick="showBarcode('Yogurt')"></i>
+    </div>
+  </div>
+
+
+  <div class="item-container">
+    <div class="item">
+      <i class="fas fa-plus-circle plus-button"></i>
+      <div class="info-container">
+        <span>Lemon</span>
+        <span class="quantity">3 remaining</span>
+      </div>
+      <i class="fas fa-info-circle" onclick="showBarcode('Apples')"></i>
+    </div>
+  </div>
+  <div class="item-container">
+    <div class="item">
+      <i class="fas fa-plus-circle plus-button"></i>
+      <div class="info-container">
+        <span>Pepper Hot</span>
+        <span class="quantity">1 remaining</span>
+      </div>
+      <i class="fas fa-info-circle" onclick="showBarcode('Orange Juice')"></i>
+    </div>
+  </div>
+  <div class="item-container">
+    <div class="item">
+      <i class="fas fa-plus-circle plus-button"></i>
+      <div class="info-container">
+        <span>Chicken</span>
+        <span class="quantity">2 remaining</span>
+      </div>
+      <i class="fas fa-info-circle" onclick="showBarcode('Chicken')"></i>
+    </div>
+  </div>
+  <div class="item-container">
+    <div class="item expired">
+      <i class="fas fa-plus-circle plus-button"></i>
+      <div class="info-container">
+        <span>Yogurt</span>
+        <span class="quantity">Expired on 2024-03-14</span>
+      </div>
+      <i class="fas fa-info-circle" onclick="showBarcode('Yogurt')"></i>
+    </div>
+  </div>
+  <!-- Add more items as needed -->
+</div>
+
+<!-- Barcode Box -->
+<div class="barcode-box" id="barcodeBox">
+  <div class="barcode-content">
+    <h3>Barcode</h3>
+    <div id="barcodeImgContainer">
+      <!-- Dummy barcode image -->
+      <img class="barcode-img" src="https://dummyimage.com/150x150/000/fff&text=Barcode" alt="Barcode">
+    </div>
+    <button onclick="closeBarcodeBox()">Close</button>
+  </div>
+</div>
+
+<script>
+  function showBarcode(itemName) {
+    // Show the barcode box
+    document.getElementById('barcodeBox').style.display = 'block';
+
+    // Here, you can generate and display the actual barcode image
+    // For demonstration purposes, I'm showing a dummy barcode image
+    // Dummy barcode image URL: https://dummyimage.com/150x150/000/fff&text=Barcode
+  }
+
+  function closeBarcodeBox() {
+    // Hide the barcode box
+    document.getElementById('barcodeBox').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
